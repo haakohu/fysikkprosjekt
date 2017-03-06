@@ -9,28 +9,15 @@ def get_info_from_file(filepath):
   return t,x
 
 
+t1,x1 = get_info_from_file("python/utenfjar2.txt")
+t2,x2 = get_info_from_file("python/utenfjar1.txt")
+x1 /= 100
+x2 /= 100
 
-t,x = get_info_from_file("python/utenfjar2.txt")
-x /= 100
-
-n = len(t)
-u = []
-vinkel = pi/4
-g = 9.81
-half_size = floor(n/4)
-t = t[half_size:n]
-x = x[half_size:n]
-
-for i in range(0,n-half_size):
-  new_value = cos(vinkel) / sin(vinkel) - 2*x[i] / (g * t[i]**2 * sin(vinkel))
-  u.append(new_value)
-
-
-
-
-print(u)
-
-print(np.average(u))
-#plt.plot(t,u)
-#plt.show()
-
+a1 = 2* (x1[-1] -x1[0])/(t1[-1] - t1[0])**2
+a2 = 2* (x2[-1] -x2[0])/(t2[-1] - t2[0])**2
+av = (a1+a2) / 2
+vinkel = pi / 4
+g = 9.82
+my = av/(g*cos(vinkel))
+print(my)
